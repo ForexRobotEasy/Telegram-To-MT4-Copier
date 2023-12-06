@@ -1,0 +1,44 @@
+
+// Program: Telegram To MT4 Copier
+// Developer's Site: forexroboteasy.com
+// Development: Forex Robot Easy Team
+
+// Function to customize the Renko chart box size
+void SetBoxSize(double boxSize) {
+  // Validate the input box size
+  if (boxSize < 0.01 || boxSize > 100) {
+    Print('Invalid box size. Please enter a value between 0.01 and 100.');
+    return;
+  }
+  
+  // Update the Renko chart with the chosen box size
+  ChartSetInteger(0, CHART_BRICK_SIZE, int(boxSize * 10));
+}
+
+// Function to enable/disable wicks in the Renko chart
+void SetShowWicks(bool showWicks) {
+  // Enable/disable wicks based on user's choice
+  ChartSetInteger(0, CHART_SHOW_WICKS, showWicks ? 1 : 0);
+}
+
+// Function to initialize Renko chart with historical data
+void SetHistoryStart(datetime startDate) {
+  // Set the start date for Renko chart
+  ChartSetInteger(0, CHART_BEGIN, TimeToInteger(startDate));
+}
+
+// Function to limit the number of bars displayed on the Renko chart
+void SetMaxBars(int maxBars) {
+  // Set the maximum number of bars for Renko chart
+  ChartSetInteger(0, CHART_MAX_BARS, maxBars);
+}
+
+// Usage examples
+void OnStart() {
+  // Example usage of the functions
+  SetBoxSize(10.5); // Set box size to 10.5
+  SetShowWicks(false); // Disable wicks in the Renko chart
+  SetHistoryStart(D'2022.01.01'); // Set start date to 1st January 2022
+  SetMaxBars(1000); // Limit the number of bars to 1000
+}
+
